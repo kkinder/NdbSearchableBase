@@ -5,4 +5,4 @@ install:
     - "wget -q https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.35.zip"
     - "unzip -q google_appengine_1.9.35.zip"
 script:
-    - "PYTHONPATH=google_appengine:google_appengine/lib:google_appengine/yaml/lib APPENGINE_SDK=google_appengine PYTHONPATH=lib python tests/test_indexing.py"
+    - "PYTHONPATH=google_appengine:google_appengine/lib:google_appengine/lib/yaml/lib APPENGINE_SDK=google_appengine PYTHONPATH=lib python tests/test_indexing.py"
