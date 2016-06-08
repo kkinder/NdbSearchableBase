@@ -2,10 +2,13 @@ import unittest
 import os
 import sys
 
-APPENGINE_PATHS = ['/usr/local/google_appengine']
-for path in APPENGINE_PATHS:
-    if os.path.exists(path):
-        sys.path.append(path)
+if 'APPENGINE_SDK' in os.environ:
+    sys.path.append(os.environ['APPENGINE_SDK'])
+else:
+    APPENGINE_PATHS = ['/usr/local/google_appengine']
+    for path in APPENGINE_PATHS:
+        if os.path.exists(path):
+            sys.path.append(path)
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')))
 
