@@ -17,3 +17,5 @@ NdbSearchableBase brings together NDB with document indexing. Just base your ndb
         search_results = Contact.search('Fake')
 
 The code itself is very small, simple, and easy to understand.
+
+NdbSearchableBase is an extraction of the code from [GAEStarterKit](https://github.com/kkinder/GAEStarterKit), a more comprehensive App Engine framework.
