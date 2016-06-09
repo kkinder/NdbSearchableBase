@@ -12,6 +12,9 @@ else:
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')))
 
+import dev_appserver
+dev_appserver.fix_sys_path()
+
 from google.appengine.ext import ndb, testbed
 from google.appengine.datastore import datastore_stub_util
 
