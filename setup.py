@@ -22,7 +22,7 @@ import setuptools
 # To debug, set DISTUTILS_DEBUG env var to anything.
 setuptools.setup(
     name="NdbSearchableBase",
-    version="1.0",
+    version="1.1",
     packages=['NdbSearchableBase'],
     author="Ken Kinder",
     author_email="ken@kkinder.com",
