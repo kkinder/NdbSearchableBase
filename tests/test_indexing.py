@@ -16,12 +16,13 @@ import dev_appserver
 dev_appserver.fix_sys_path()
 
 from google.appengine.ext import ndb, testbed
+from google.appengine.ext.ndb.polymodel import PolyModel
 from google.appengine.datastore import datastore_stub_util
 
 from NdbSearchableBase import SearchableModel
 
 
-class MammalModel(SearchableModel):
+class MammalModel(SearchableModel, PolyModel):
     name = ndb.StringProperty()
 
 
@@ -48,9 +49,11 @@ class EmailSignupTestCase(unittest.TestCase):
         ctx.set_memcache_policy(False)
 
     def test_basic_search(self):
-        a = Person(name='Pants McEngineering', address='123 Flappy Street')
-        a.put()
-        a.search_update_index()
+        pants = Person(name='Pants McEngineering Looperson', address='123 Flappy Street')
+        pants.put()
+
+        ralph = Dog(name='Ralph McDogface Looperson', tricks='fetching')
+        ralph.put()
 
         person_results = Person.search('Pants')
         self.failUnlessEqual(person_results.number_found, 1)
@@ -60,6 +63,13 @@ class EmailSignupTestCase(unittest.TestCase):
 
         mammal_results = MammalModel.search('Pants')
         self.failUnlessEqual(mammal_results.number_found, 1)
+
+        both_reusults = MammalModel.search('Looperson')
+        self.failUnlessEqual(both_reusults.number_found, 2)
+
+        dog_results2 = Dog.search('Looperson')
+        self.failUnlessEqual(dog_results2.number_found, 1)
+
 
     def tearDown(self):
         self.testbed.deactivate()

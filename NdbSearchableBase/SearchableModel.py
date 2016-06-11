@@ -1,5 +1,5 @@
 """
-Includes BaseModel, which can be used as an ndb base that's fully searchable.
+Includes BaseModel, which can be used as an ndb mixin that's fully searchable.
 """
 import string
 
@@ -17,7 +17,10 @@ SEARCHABLE_PROPERTY_TYPES = {
 alphabet = string.digits + string.letters
 
 
-class SearchableModel(PolyModel):
+class SearchableModel(object):
+    """
+    Mix this class into your ndb models to make them searchable.
+    """
     searching_enabled = True
     searchable_fields = None  # defaults to all fields
     search_index = 'general-index'

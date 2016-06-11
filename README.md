@@ -7,7 +7,7 @@ NdbSearchableBase brings together NDB with document indexing. Just base your ndb
     
     from NdbSearchableBase import SearchableModel
     
-    class Contact(SearchableModel):
+    class Contact(SearchableModel, ndb.Model):
         name = ndb.StringProperty()
         address = ndb.TextProperty()
     
