@@ -13,16 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import distribute_setup
-
-distribute_setup.use_setuptools()
-
 import setuptools
 
 # To debug, set DISTUTILS_DEBUG env var to anything.
 setuptools.setup(
     name="NdbSearchableBase",
-    version="1.1",
+    version="1.2",
     packages=['NdbSearchableBase'],
     author="Ken Kinder",
     author_email="ken@kkinder.com",
