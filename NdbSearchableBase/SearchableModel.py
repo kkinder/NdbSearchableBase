@@ -11,7 +11,8 @@ SEARCHABLE_PROPERTY_TYPES = {
     ndb.TextProperty: search.TextField,
     ndb.IntegerProperty: search.NumberField,
     ndb.FloatProperty: search.NumberField,
-    ndb.DateProperty: search.DateField
+    ndb.DateProperty: search.DateField,
+    ndb.KeyProperty: search.AtomField
 }
 
 alphabet = string.digits + string.letters
@@ -128,6 +129,8 @@ class SearchableModel(object):
                         if isinstance(value, list) or isinstance(value, tuple) or isinstance(value, set):
                             for v in value:
                                 field = field_type(name=f, value=v)
+                        elif isinstance(value, ndb.Key):
+                            field = field_type(name=f, value=value.urlsafe())
                         else:
                             field = field_type(name=f, value=value)
             if not field_found:
